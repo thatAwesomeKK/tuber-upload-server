@@ -31,6 +31,7 @@ RUN npm install -g pnpm
 # Copy only the necessary package files from the builder stage
 COPY --from=builder /usr/src/app/package.json ./
 COPY --from=builder /usr/src/app/pnpm-lock.yaml ./
+COPY --from=builder /usr/src/app/src/worker.js ./
 
 # Install production dependencies only
 RUN pnpm install --prod
